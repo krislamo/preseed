@@ -49,11 +49,11 @@ d-i netcfg/choose_interface select auto
 # Static network configuration.
 #
 # IPv4 example
-#d-i netcfg/get_ipaddress string 192.168.1.42
-#d-i netcfg/get_netmask string 255.255.255.0
-#d-i netcfg/get_gateway string 192.168.1.1
-#d-i netcfg/get_nameservers string 192.168.1.1
-#d-i netcfg/confirm_static boolean true
+d-i netcfg/get_ipaddress string 192.168.1.15
+d-i netcfg/get_netmask string 255.255.255.0
+d-i netcfg/get_gateway string 192.168.1.1
+d-i netcfg/get_nameservers string 192.168.1.1
+d-i netcfg/confirm_static boolean true
 #
 # IPv6 example
 #d-i netcfg/get_ipaddress string fc00::2
@@ -71,7 +71,7 @@ d-i netcfg/get_domain string unassigned-domain
 # If you want to force a hostname, regardless of what either the DHCP
 # server returns or what the reverse DNS entry for the IP is, uncomment
 # and adjust the following line.
-#d-i netcfg/hostname string somehost
+d-i netcfg/hostname string debian-base
 
 # Disable that annoying WEP key dialog.
 d-i netcfg/wireless_wep string
@@ -325,7 +325,7 @@ d-i partman/confirm_nooverwrite boolean true
 
 
 ### Package selection
-#tasksel tasksel/first multiselect standard, web-server, kde-desktop
+tasksel tasksel/first multiselect ssh-server
 
 # Individual additional packages to install
 #d-i pkgsel/include string openssh-server build-essential
@@ -435,4 +435,5 @@ d-i finish-install/reboot_in_progress note
 d-i preseed/late_command string \
   mkdir -p /target/home/kris/.ssh; \
   wget -O /target/home/kris/.ssh/authorized_keys \
-    https://raw.githubusercontent.com/krislamo/bootstrap/master/authorized_keys
+    https://raw.githubusercontent.com/krislamo/bootstrap/master/authorized_keys; \
+  in-target chown kris:kris /target/home/kris/.ssh/authorized_keys;
