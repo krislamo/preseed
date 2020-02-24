@@ -108,7 +108,7 @@ d-i mirror/http/proxy string
 ### Account setup
 # Skip creation of a root account (normal user account will be able to
 # use sudo).
-#d-i passwd/root-login boolean false
+d-i passwd/root-login boolean false
 # Alternatively, to skip creation of a normal user account.
 #d-i passwd/make-user boolean false
 
@@ -119,8 +119,8 @@ d-i mirror/http/proxy string
 #d-i passwd/root-password-crypted password [crypt(3) hash]
 
 # To create a normal user account.
-#d-i passwd/user-fullname string Debian User
-#d-i passwd/username string debian
+d-i passwd/user-fullname string Kris Lamoureux
+d-i passwd/username string kris
 # Normal user's password, either in clear text
 #d-i passwd/user-password password insecure
 #d-i passwd/user-password-again password insecure
@@ -358,7 +358,7 @@ d-i grub-installer/with_other_os boolean true
 
 # Due notably to potential USB sticks, the location of the MBR can not be
 # determined safely in general, so this needs to be specified:
-#d-i grub-installer/bootdev  string /dev/sda
+d-i grub-installer/bootdev  string /dev/vda
 # To install to the first device (assuming it is not a USB stick):
 #d-i grub-installer/bootdev  string default
 
