@@ -132,4 +132,5 @@ d-i preseed/late_command string \
     https://raw.githubusercontent.com/krislamo/bootstrap/master/authorized_keys;
 
 # Poweroff instead of restarting
-d-i debian-installer/exit/poweroff boolean true
+#d-i debian-installer/exit/poweroff boolean true
+ubiquity ubiquity/poweroff boolean true
