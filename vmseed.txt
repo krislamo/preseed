@@ -52,13 +52,11 @@ d-i mirror/http/proxy string
 
 # Don't set a root password
 d-i passwd/root-login boolean false
-# Alternatively, to skip creation of a normal user account.
-d-i passwd/make-user boolean false
 
 # Create a normal user account.
 d-i passwd/user-fullname string Kris Lamoureux
 d-i passwd/username string kris
-#d-i passwd/user-password-crypted password [crypt(3) hash]
+d-i passwd/user-password-crypted password !
 
 ### Clock and time zone setup
 
