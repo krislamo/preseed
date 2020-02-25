@@ -53,7 +53,7 @@ d-i mirror/http/proxy string
 # Don't set a root password
 d-i passwd/root-login boolean false
 # Alternatively, to skip creation of a normal user account.
-#d-i passwd/make-user boolean false
+d-i passwd/make-user boolean false
 
 # Create a normal user account.
 d-i passwd/user-fullname string Kris Lamoureux
@@ -130,7 +130,3 @@ d-i preseed/late_command string \
   mkdir -p /target/root/.ssh; \
   wget -O /target/root/.ssh/authorized_keys \
     https://raw.githubusercontent.com/krislamo/bootstrap/master/authorized_keys;
-
-# Poweroff instead of restarting
-#d-i debian-installer/exit/poweroff boolean true
-ubiquity ubiquity/poweroff boolean true
