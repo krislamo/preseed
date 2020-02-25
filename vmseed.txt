@@ -1,9 +1,9 @@
-#### Contents of the preconfiguration file (for buster)
+#### QEMU/KVM Virtual Machine Seed for Debian Buster
 
-# Make settings priority
 d-i debconf/priority string critical
 
 ### Localization
+
 # Preseeding only locale sets language, country and locale.
 d-i debian-installer/locale string en_US
 
@@ -38,23 +38,26 @@ d-i netcfg/hostname string debian-base
 d-i netcfg/wireless_wep string
 
 ### Mirror settings
+
 d-i mirror/country string manual
 d-i mirror/http/hostname string http.us.debian.org
 d-i mirror/http/directory string /debian
 d-i mirror/http/proxy string
 
 ### Account setup
+
 # Don't set a root password
 d-i passwd/root-login boolean false
 # Alternatively, to skip creation of a normal user account.
 #d-i passwd/make-user boolean false
 
-# To create a normal user account.
+# Create a normal user account.
 d-i passwd/user-fullname string Kris Lamoureux
 d-i passwd/username string kris
 #d-i passwd/user-password-crypted password [crypt(3) hash]
 
 ### Clock and time zone setup
+
 # Controls whether or not the hardware clock is set to UTC.
 d-i clock-setup/utc boolean true
 
@@ -100,6 +103,8 @@ d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
 
 ### Package selection
+
+# Install SSH server
 tasksel tasksel/first multiselect ssh-server
 
 # Upgrade packages after debootstrap
@@ -119,7 +124,7 @@ d-i finish-install/reboot_in_progress note
 # Just after preseeding is read, reset network settings
 d-i preseed/early_command string kill-all-dhcp; netcfg
 
-# Just before install finishes install SSH keys into root
+# Just before install finishes, install SSH keys into root
 d-i preseed/late_command string \
   mkdir -p /target/root/.ssh; \
   wget -O /target/root/.ssh/authorized_keys \
