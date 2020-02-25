@@ -130,3 +130,6 @@ d-i preseed/late_command string \
   mkdir -p /target/root/.ssh; \
   wget -O /target/root/.ssh/authorized_keys \
     https://raw.githubusercontent.com/krislamo/bootstrap/master/authorized_keys;
+
+# Poweroff instead of restarting
+d-i debian-installer/exit/poweroff boolean true
