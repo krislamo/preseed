@@ -109,6 +109,9 @@ d-i partman/confirm_nooverwrite boolean true
 # Install SSH server
 tasksel tasksel/first multiselect ssh-server
 
+# Disable CDROM entries after install
+d-i apt-setup/disable-cdrom-entries boolean true
+
 # Upgrade packages after debootstrap
 d-i pkgsel/upgrade select full-upgrade
 
