@@ -49,6 +49,23 @@ d-i mirror/http/hostname string http.us.debian.org
 d-i mirror/http/directory string /debian
 d-i mirror/http/proxy string
 
+choose-mirror-bin       mirror/codename string  buster
+choose-mirror-bin       mirror/http/countries   select  US
+choose-mirror-bin       mirror/country  string  US
+choose-mirror-bin       mirror/ftp/proxy        string
+choose-mirror-bin       mirror/noarch   error
+choose-mirror-bin       mirror/http/mirror      select  deb.debian.org
+choose-mirror-bin       mirror/protocol select  http
+choose-mirror-bin       mirror/http/hostname    string  deb.debian.org
+choose-mirror-bin       mirror/ftp/hostname     string  mirror
+choose-mirror-bin       mirror/http/proxy       string
+choose-mirror-bin       mirror/http/directory   string  /debian/
+choose-mirror-bin       mirror/ftp/directory    string  /debian/
+choose-mirror-bin       mirror/bad      error
+choose-mirror-bin       mirror/https/countries  select  US
+choose-mirror-bin       mirror/no-default       boolean true
+choose-mirror-bin       mirror/suite    select  stable
+
 ### Account setup
 
 # Don't set a root password
