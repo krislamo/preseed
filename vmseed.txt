@@ -60,18 +60,6 @@ choose-mirror-bin mirror/http/proxy string
 choose-mirror-bin mirror/http/directory string /debian/
 choose-mirror-bin mirror/https/countries select US
 
-d-i mirror/https/mirror select deb.debian.org
-d-i mirror/https/directory string /debian/
-d-i mirror/https/proxy string
-d-i mirror/https/hostname string mirror
-choose-mirror-bin mirror/ftp/proxy string
-choose-mirror-bin mirror/ftp/hostname string mirror
-choose-mirror-bin mirror/ftp/directory string /debian/
-choose-mirror-bin mirror/noarch error
-choose-mirror-bin mirror/bad error
-choose-mirror-bin mirror/no-default boolean true
-
-
 ### Account setup
 
 # Don't set a root password
