@@ -140,11 +140,11 @@ d-i finish-install/reboot_in_progress note
 
 # Just before install finishes, install SSH keys into root
 d-i preseed/late_command string \
-
+  \
   mkdir -p /target/root/.ssh; \
   wget -O /target/root/.ssh/authorized_keys \
     https://raw.githubusercontent.com/krislamo/bootstrap/master/authorized_keys; \
-
+  \
   ethdev=$(ip a | grep -e "^2" | awk '{print substr($2, 1, length($2)-1)}'); \
   echo "$ethdev: \4{$ethdev}" >> /target/etc/issue; \
   ssh-keygen -l -f /target/etc/ssh/ssh_host_ecdsa_key.pub | \
