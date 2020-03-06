@@ -1,8 +1,5 @@
 #### QEMU/KVM Virtual Machine Seed for Debian Buster
 
-# Only show critical messages
-d-i debconf/priority string critical
-
 # Just after preseeding is read, reset automatic network settings
 d-i preseed/early_command string kill-all-dhcp; netcfg
 
@@ -20,14 +17,14 @@ d-i keyboard-configuration/xkb-keymap select us
 d-i netcfg/choose_interface select auto
 
 # Configure network manually
-d-i netcfg/disable_autoconfig boolean true
+#d-i netcfg/disable_autoconfig boolean true
 
 # Static network configuration.
-d-i netcfg/get_ipaddress string 192.168.1.17
-d-i netcfg/get_netmask string 255.255.255.0
-d-i netcfg/get_gateway string 192.168.1.1
-d-i netcfg/get_nameservers string 192.168.1.1
-d-i netcfg/confirm_static boolean true
+#d-i netcfg/get_ipaddress string 192.168.1.X
+#d-i netcfg/get_netmask string 255.255.255.0
+#d-i netcfg/get_gateway string 192.168.1.1
+#d-i netcfg/get_nameservers string 192.168.1.1
+#d-i netcfg/confirm_static boolean true
 
 # Any hostname and domain names assigned from dhcp take precedence over
 # values set here. However, setting the values still prevents the questions
@@ -43,22 +40,11 @@ d-i netcfg/wireless_wep string
 
 ### Mirror settings
 
-apt-mirror-setup apt-setup/use_mirror boolean true
-apt-mirror-setup apt-setup/contrib boolean false
-apt-mirror-setup apt-setup/non-free boolean false
-apt-mirror-setup apt-setup/no_mirror boolean false
-apt-mirror-setup apt-setup/mirror/error select Retry
-
-choose-mirror-bin mirror/country string US
 choose-mirror-bin mirror/protocol select http
-choose-mirror-bin mirror/codename string buster
-choose-mirror-bin mirror/suite select stable
-choose-mirror-bin mirror/http/mirror select deb.debian.org
-choose-mirror-bin mirror/http/countries select US
+choose-mirror-bin mirror/country string US
 choose-mirror-bin mirror/http/hostname string deb.debian.org
-choose-mirror-bin mirror/http/proxy string
 choose-mirror-bin mirror/http/directory string /debian/
-choose-mirror-bin mirror/https/countries select US
+choose-mirror-bin mirror/http/proxy string
 
 ### Account setup
 
